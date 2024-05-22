@@ -1,12 +1,17 @@
 import React, { useState } from "react";
 import FormRow from "../components/FormRow";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 function Login() {
+  const navigate = useNavigate();
+
   const [formData, setFormData] = useState({
-    username: "",
-    password: "",
+    username: "user",
+    password: "asd",
   });
+
+  const [errorMessage, setErrorMessage] = useState("");
+  const [loading, setLoading] = useState(false);
 
   const handleChange = (e) => {
     setFormData({
@@ -17,19 +22,37 @@ function Login() {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+    setLoading(true);
 
-    const response = await fetch("/auth/login", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify(formData),
-    });
+    try {
+      const response = await fetch("/auth/login", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(formData),
+      });
+
+      if (response.ok) {
+        const data = await response.json();
+        console.log(data);
+        localStorage.setItem("jwtToken", data.jwt);
+        localStorage.setItem("roles", data.roles);
+        navigate("/");
+      } else {
+        setErrorMessage("Incorrect username or password");
+      }
+    } catch (error) {
+      console.error("An error occurred:", error);
+      setErrorMessage("An error occurred while logging in");
+    } finally {
+      setLoading(false);
+    }
   };
 
   return (
     <>
-    <h1>Login</h1>
+      <h1>Login</h1>
       <form onSubmit={handleSubmit}>
         <FormRow
           type='text'
@@ -47,7 +70,10 @@ function Login() {
           onChange={handleChange}
           required
         />
-        <button type='submit'>login</button>
+        <button type='submit' disabled={loading}>
+          {loading ? "Logging in..." : "Login"}
+        </button>
+        {errorMessage && <p>{errorMessage}</p>}
       </form>
       <p>
         Not a member yet? <Link to='/register'>register</Link>

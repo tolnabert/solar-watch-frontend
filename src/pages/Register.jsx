@@ -1,8 +1,10 @@
 import { useState } from "react";
 import FormRow from "../components/FormRow";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 function Register() {
+  const navigate = useNavigate();
+
   const [formData, setFormData] = useState({
     firstName: "",
     lastName: "",
@@ -12,6 +14,9 @@ function Register() {
     password: "",
     passwordConfirmation: "",
   });
+
+  const [loading, setLoading] = useState(false);
+  const [message, setMessage] = useState("");
 
   const handleChange = (e) => {
     setFormData({
@@ -31,8 +36,14 @@ function Register() {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    console.log("form data: ", formData);
 
+    if (formData.password !== formData.passwordConfirmation) {
+      setMessage("Passwords do not match");
+      return;
+    }
+
+    setLoading(true);
+    setMessage("");
     try {
       const response = await fetch("/auth/register", {
         method: "POST",
@@ -41,14 +52,26 @@ function Register() {
         },
         body: JSON.stringify(formData),
       });
+
+      if (response.ok) {
+        setMessage("Registration successful! You can now login.");
+
+        navigate("/login");
+      } else {
+        const data = await response.json();
+        setMessage(data.message || "Failed to register");
+      }
     } catch (error) {
       console.error("Error during registration:", error);
+      setMessage("An error occurred during registration");
+    } finally {
+      setLoading(false);
     }
   };
 
   return (
     <>
-    <h1>Register</h1>
+      <h1>Register</h1>
       <form onSubmit={handleSubmit}>
         <FormRow
           type='text'
@@ -106,8 +129,10 @@ function Register() {
           onChange={handleChange}
           required
         />
-
-        <button type='submit'>register</button>
+        <button type='submit' disabled={loading}>
+          {loading ? "Registering..." : "Register"}
+        </button>
+        {message && <p>{message}</p>}
       </form>
       <p>
         Already a member? <Link to='/login'>Login</Link>

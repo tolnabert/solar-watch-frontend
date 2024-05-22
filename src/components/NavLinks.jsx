@@ -1,22 +1,37 @@
-import { links } from "../utils/links";
+import { adminLinks, links } from "../utils/links";
 import { NavLink } from "react-router-dom";
 
 function NavLinks() {
+  const jwtToken = localStorage.getItem("jwtToken");
+  const roles = localStorage.getItem("roles");
+
   return (
     <div>
-      {links.map((link) => {
-        return (
+      {roles && roles.includes("ROLE_ADMIN") ? (
+        adminLinks.map((link) => (
           <NavLink
-            className={({ isActive }) => {
-              return `navlink-label ${isActive ? "navlink-select" : ""}`;
-            }}
+            className={({ isActive }) =>
+              `navlink-label ${isActive ? "navlink-select" : ""}`
+            }
             to={link.href}
             key={link.label}
           >
             {link.label}
           </NavLink>
-        );
-      })}
+        ))
+      ) : (
+        links.map((link) => (
+          <NavLink
+            className={({ isActive }) =>
+              `navlink-label ${isActive ? "navlink-select" : ""}`
+            }
+            to={link.href}
+            key={link.label}
+          >
+            {link.label}
+          </NavLink>
+        ))
+      )}
     </div>
   );
 }
