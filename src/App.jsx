@@ -5,7 +5,6 @@ import LandingPage from "./pages/LandingPage";
 import HomeLayout from "./pages/HomeLayout";
 import AdminPage from "./pages/AdminPage";
 import AddSolarInfo from "./pages/AddSolarInfo";
-import SecurityPw from "./pages/SecurityPw";
 import AboutUs from "./pages/AboutUs";
 import Contact from "./pages/Contact";
 import ListSolarInfo from "./pages/ListSolarInfo";
@@ -40,10 +39,6 @@ const router = createBrowserRouter([
       {
         path:"list",
         element:<ListSolarInfo/>
-      },
-      {
-        path: "security",
-        element: <SecurityPw />,
       },
     ],
   },
