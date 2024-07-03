@@ -8,7 +8,6 @@ function Header() {
   const handleLogout = () => {
     localStorage.removeItem("jwtToken");
     localStorage.removeItem("roles");
-
   };
 
   return (

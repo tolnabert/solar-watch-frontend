@@ -3,15 +3,18 @@ import FormRow from "../components/FormRow";
 
 function AddSolarInfo() {
   const [formData, setFormData] = useState({
-    name: "",
+    cityName: "",
     country: "",
     state: "",
+    date: "",
     latitude: "",
     longitude: "",
     sunrise: "",
     sunset: "",
+    sunriseAmPm: "AM",
+    sunsetAmPm: "PM",
   });
-  const [date, setDate] = useState(new Date());
+
   const [message, setMessage] = useState("");
   const [loading, setLoading] = useState(false);
 
@@ -25,7 +28,10 @@ function AddSolarInfo() {
   const handleDateChange = (e) => {
     const date = new Date(e.target.value);
     const formattedDate = date.toISOString().slice(0, 10);
-    setDate(formattedDate);
+    setFormData({
+      ...formData,
+      date: formattedDate,
+    });
   };
 
   const handleSubmit = async (e) => {
@@ -36,13 +42,22 @@ function AddSolarInfo() {
     const token = localStorage.getItem("jwtToken");
 
     try {
-      const response = await fetch(`/api/solar-info/data/admin/${date}`, {
+      const formattedSunrise = `${formData.sunrise} ${formData.sunriseAmPm}`;
+      const formattedSunset = `${formData.sunset} ${formData.sunsetAmPm}`;
+
+      const solarInfoData = {
+        ...formData,
+        sunrise: formattedSunrise,
+        sunset: formattedSunset,
+      };
+
+      const response = await fetch("/api/add-solar-info", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
           Authorization: `Bearer ${token}`,
         },
-        body: JSON.stringify(formData),
+        body: JSON.stringify(solarInfoData),
       });
 
       if (response.ok) {
@@ -64,9 +79,9 @@ function AddSolarInfo() {
       <form onSubmit={handleSubmit}>
         <FormRow
           type='text'
-          name='name'
+          name='cityName'
           labelText='City name: '
-          value={formData.name}
+          value={formData.cityName}
           onChange={handleChange}
           required
         />
@@ -89,8 +104,8 @@ function AddSolarInfo() {
           type='date'
           name='date'
           labelText='Date: '
-          value={date}
-          onChange={(e) => handleDateChange(e)}
+          value={formData.date}
+          onChange={handleDateChange}
           required
         />
         <FormRow
@@ -109,6 +124,13 @@ function AddSolarInfo() {
           onChange={handleChange}
           required
         />
+        <div>
+          <label>Sunrise AM/PM:</label>
+          <select name="sunriseAmPm" value={formData.sunriseAmPm} onChange={handleChange}>
+            <option value="AM">AM</option>
+            <option value="PM">PM</option>
+          </select>
+        </div>
         <FormRow
           type='text'
           name='sunrise'
@@ -117,6 +139,13 @@ function AddSolarInfo() {
           onChange={handleChange}
           required
         />
+        <div>
+          <label>Sunset AM/PM:</label>
+          <select name="sunriseAmPm" value={formData.sunsetAmPm} onChange={handleChange}>
+            <option value="AM">AM</option>
+            <option value="PM">PM</option>
+          </select>
+        </div>
         <FormRow
           type='text'
           name='sunset'
@@ -126,7 +155,7 @@ function AddSolarInfo() {
           required
         />
         <button type='submit' disabled={loading}>
-          {loading ? "Adding Solar Info..." : "Add Solar Info"}
+          {loading ? "Adding..." : "Add"}
         </button>
         {message && <p>{message}</p>}
       </form>
