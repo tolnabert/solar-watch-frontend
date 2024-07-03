@@ -1,8 +1,10 @@
 import { useState } from "react";
+import "../pages/landingPageStyles.css";
 import FormRow from "../components/FormRow";
 import SolarInfo from "../components/SolarInfo";
 import { fetchGetWithAuth } from "../fetchMethods";
 import { useNavigate } from "react-router-dom";
+
 
 function LandingPage() {
   const navigate = useNavigate();
@@ -96,7 +98,10 @@ function LandingPage() {
           onChange={handleDateChange}
           required
         />
-        <button type='submit'>Search</button>
+        <button type='submit' disabled={isLoading}>
+          {isLoading ? "Searching..." : "Search"}
+        </button>
+        {error && <p className="error-msg">{error.message}</p>}
       </form>
       {data && <SolarInfo solarInfo={data} />}
     </div>
