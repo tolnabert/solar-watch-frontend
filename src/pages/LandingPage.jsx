@@ -5,10 +5,9 @@ import SolarInfo from "../components/SolarInfo";
 import { fetchGetWithAuth } from "../fetchMethods";
 import { useNavigate } from "react-router-dom";
 
-
 function LandingPage() {
   const navigate = useNavigate();
-  const [data, setData] = useState(null);
+  const [data, setData] = useState([]);
   const [error, setError] = useState(null);
   const [isLoading, setIsLoading] = useState(false);
 
@@ -48,7 +47,7 @@ function LandingPage() {
     try {
       setIsLoading(true);
       const result = await fetchGetWithAuth(url, token);
-      setData(result);
+      setData([...data, result]);
     } catch (error) {
       setError(error);
     } finally {
@@ -101,7 +100,7 @@ function LandingPage() {
         <button type='submit' disabled={isLoading}>
           {isLoading ? "Searching..." : "Search"}
         </button>
-        {error && <p className="error-msg">{error.message}</p>}
+        {error && <p className='error-msg'>{error.message}</p>}
       </form>
       {data && <SolarInfo solarInfo={data} />}
     </div>
