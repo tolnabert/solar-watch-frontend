@@ -51,7 +51,7 @@ function AddSolarInfo() {
         sunset: formattedSunset,
       };
 
-      const response = await fetch("/api/add-solar-info", {
+      const response = await fetch("/api/admin/solar-info/add", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
