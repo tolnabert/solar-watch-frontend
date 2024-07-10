@@ -4,7 +4,7 @@ const { createProxyMiddleware } = require('http-proxy-middleware')
 const app = express(); 
 
 app.use('/api', createProxyMiddleware({
-  target: 'http://backend:8080/api', //just dev
+  target: 'http://backend:8080/api',
   changeOrigin: true
 }))
 
