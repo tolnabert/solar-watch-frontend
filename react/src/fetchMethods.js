@@ -1,6 +1,4 @@
-
 export async function fetchGetWithAuth(url, jwtToken) {
-  
   try {
     const response = await fetch(url, {
       headers: { Authorization: `Bearer ${jwtToken}` },
