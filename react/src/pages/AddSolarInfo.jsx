@@ -44,7 +44,7 @@ function AddSolarInfo() {
     try {
       const formattedSunrise = `${formData.sunrise} ${formData.sunriseAmPm}`;
       const formattedSunset = `${formData.sunset} ${formData.sunsetAmPm}`;
-
+      console.log(formattedSunrise, formattedSunset);
       const solarInfoData = {
         ...formData,
         sunrise: formattedSunrise,
@@ -126,9 +126,13 @@ function AddSolarInfo() {
         />
         <div>
           <label>Sunrise AM/PM:</label>
-          <select name="sunriseAmPm" value={formData.sunriseAmPm} onChange={handleChange}>
-            <option value="AM">AM</option>
-            <option value="PM">PM</option>
+          <select
+            name='sunriseAmPm'
+            value={formData.sunriseAmPm}
+            onChange={handleChange}
+          >
+            <option value='AM'>AM</option>
+            <option value='PM'>PM</option>
           </select>
         </div>
         <FormRow
@@ -141,9 +145,13 @@ function AddSolarInfo() {
         />
         <div>
           <label>Sunset AM/PM:</label>
-          <select name="sunriseAmPm" value={formData.sunsetAmPm} onChange={handleChange}>
-            <option value="AM">AM</option>
-            <option value="PM">PM</option>
+          <select
+            name='sunsetAmPm'
+            value={formData.sunsetAmPm}
+            onChange={handleChange}
+          >
+            <option value='AM'>AM</option>
+            <option value='PM'>PM</option>
           </select>
         </div>
         <FormRow

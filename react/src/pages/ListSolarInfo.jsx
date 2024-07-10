@@ -1,34 +1,25 @@
-import React, { useState, useEffect } from 'react';
-import SolarInfo from '../components/SolarInfo';
-import '../components/solarInfoStyles.css';
-import { fetchGetWithAuth } from '../fetchMethods';
+import { useState, useEffect } from "react";
+import SolarInfo from "../components/SolarInfo";
+import "../components/solarInfoStyles.css";
+import { fetchGetWithAuth } from "../fetchMethods";
 
 function ListSolarInfo() {
   const [solarInfo, setSolarInfo] = useState([]);
-
   const token = localStorage.getItem("jwtToken");
 
   useEffect(() => {
-    fetchSolarInfo();
-  }, []);
+    if (token) {
+      fetchSolarInfo();
+    }
+  }, [token]);
 
   const fetchSolarInfo = async () => {
     try {
-      const response = await fetchGetWithAuth('/api/all-solar-info', {
-        headers: {
-          "Content-Type": "application/json",
-          Authorization: `Bearer ${token}`,
-        },
-      });
-      
-      if (!response.ok) {
-        throw new Error('Failed to fetch solar information');
-      }
-      
-      const data = await response.json();
+      const data = await fetchGetWithAuth("/api/admin/solar-info/all", token);
       setSolarInfo(data);
+      console.log(data); // Log the received data
     } catch (error) {
-      console.error('Error fetching solar information:', error);
+      console.error("Error fetching solar information:", error);
     }
   };
 

@@ -47,7 +47,8 @@ function LandingPage() {
     try {
       setIsLoading(true);
       const result = await fetchGetWithAuth(url, token);
-      setData([...data, result]);
+      setData((prevData) => [...prevData, ...result]);
+      console.log(data);
     } catch (error) {
       setError(error);
     } finally {
@@ -102,7 +103,16 @@ function LandingPage() {
         </button>
         {error && <p className='error-msg'>{error.message}</p>}
       </form>
-      {data && <SolarInfo solarInfo={data} />}
+      {data.length > 0 ? (
+        <div>
+          <h2>Solar Information History</h2>
+          <SolarInfo solarInfo={data} />
+        </div>
+      ) : (
+        <h2>
+          Search for a city with country(optional) and with state in case of US.
+        </h2>
+      )}
     </div>
   );
 }
