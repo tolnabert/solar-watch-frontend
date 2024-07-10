@@ -10,6 +10,7 @@ import Contact from "./pages/Contact";
 import ListSolarInfo from "./pages/ListSolarInfo";
 import TestAdminPage from "./pages/TestAdminPage";
 import TestPublic from "./pages/TestPublicPage";
+import ChangePw from "./pages/ChangePw";
 
 const router = createBrowserRouter([
   {
