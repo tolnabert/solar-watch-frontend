@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import SolarInfo from "../components/SolarInfo";
-import "../components/solarInfoStyles.css";
+import "../index.css";
 import { fetchGetWithAuth } from "../fetchMethods";
 
 function ListSolarInfo() {

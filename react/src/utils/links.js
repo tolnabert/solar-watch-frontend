@@ -7,6 +7,6 @@ export const links = [
 
 export const adminLinks = [
   { href: "/admin", label: "add solar info" },
-  { href: "/admin/list", label: "list solar info" },
+  { href: "/admin/list", label: "List solar info" },
 ];
 

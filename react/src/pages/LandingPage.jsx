@@ -1,5 +1,5 @@
 import { useState } from "react";
-import "../pages/landingPageStyles.css";
+import "../index.css";
 import FormRow from "../components/FormRow";
 import SolarInfo from "../components/SolarInfo";
 import { fetchGetWithAuth } from "../fetchMethods";
@@ -73,7 +73,7 @@ function LandingPage() {
 
   return (
     <div>
-      <form onSubmit={handleSubmit}>
+      <form className='search-solar-info' onSubmit={handleSubmit}>
         <FormRow
           type='text'
           name='cityName'
@@ -98,18 +98,18 @@ function LandingPage() {
           onChange={handleDateChange}
           required
         />
-        <button type='submit' disabled={isLoading}>
+        <button className='form-btn' type='submit' disabled={isLoading}>
           {isLoading ? "Searching..." : "Search"}
         </button>
         {error && <p className='error-msg'>{error.message}</p>}
       </form>
       {data.length > 0 ? (
         <div>
-          <h2>Solar Information History</h2>
+          <h2 className='solar-info-title'>Solar Information History</h2>
           <SolarInfo solarInfo={data} />
         </div>
       ) : (
-        <h2>
+        <h2 className='solar-info-title-warning'>
           Search for a city with country(optional) and with state in case of US.
         </h2>
       )}

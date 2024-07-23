@@ -7,31 +7,29 @@ function NavLinks() {
 
   return (
     <div>
-      {roles && roles.includes("ROLE_ADMIN") ? (
-        adminLinks.map((link) => (
-          <NavLink
-            className={({ isActive }) =>
-              `navlink-label ${isActive ? "navlink-select" : ""}`
-            }
-            to={link.href}
-            key={link.label}
-          >
-            {link.label}
-          </NavLink>
-        ))
-      ) : (
-        links.map((link) => (
-          <NavLink
-            className={({ isActive }) =>
-              `navlink-label ${isActive ? "navlink-select" : ""}`
-            }
-            to={link.href}
-            key={link.label}
-          >
-            {link.label}
-          </NavLink>
-        ))
-      )}
+      {roles && roles.includes("ROLE_ADMIN")
+        ? adminLinks.map((link) => (
+            <NavLink
+              className={({ isActive }) =>
+                `navlink-label ${isActive ? "navlink-selected" : ""}`
+              }
+              to={link.href}
+              key={link.label}
+            >
+              {link.label}
+            </NavLink>
+          ))
+        : links.map((link) => (
+            <NavLink
+              className={({ isActive }) =>
+                `navlink-label ${isActive ? "navlink-selected" : ""}`
+              }
+              to={link.href}
+              key={link.label}
+            >
+              {link.label}
+            </NavLink>
+          ))}
     </div>
   );
 }
