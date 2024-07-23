@@ -3,8 +3,13 @@ const { createProxyMiddleware } = require('http-proxy-middleware')
 
 const app = express(); 
 
+app.use((req, res, next) => {
+  console.log(req.url);
+  next();
+})
+
 app.use('/api', createProxyMiddleware({
-  target: 'http://backend:8080/api',
+  target: 'http://solarwatch-backend:8080/api',
   changeOrigin: true
 }))
 
