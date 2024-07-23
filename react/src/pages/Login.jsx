@@ -52,7 +52,7 @@ function Login() {
 
   return (
     <>
-      <h1>Login</h1>
+      <h1 className='login-page-title'>Login</h1>
       <form onSubmit={handleSubmit}>
         <FormRow
           type='text'
@@ -70,13 +70,16 @@ function Login() {
           onChange={handleChange}
           required
         />
-        <button type='submit' disabled={loading}>
+        <button className='form-login-btn' type='submit' disabled={loading}>
           {loading ? "Logging in..." : "Login"}
         </button>
         {errorMessage && <p>{errorMessage}</p>}
       </form>
-      <p>
-        Not a member yet? <Link to='/register'>register</Link>
+      <p className='redirect-msg'>
+        Not a member yet?{" "}
+        <Link className='redirect-link' to='/register'>
+          register
+        </Link>
       </p>
     </>
   );

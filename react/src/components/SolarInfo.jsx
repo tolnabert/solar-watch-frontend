@@ -1,20 +1,11 @@
-import "../components/solarInfoStyles.css";
+import "../index.css";
 
 function SolarInfo({ solarInfo }) {
-  if (!solarInfo || solarInfo.length === 0) {
-    return (
-      <div className="solar-info-container">
-        <h2>Solar Information</h2>
-        <p>No solar information available</p>
-      </div>
-    );
-  }
-
   return (
-    <div className="solar-info-container">
-      <table className="solar-info-table">
+    <div className='solar-info-container'>
+      <table className='solar-info-table'>
         <thead>
-          <tr>
+          <tr className='solar-info-table-label'>
             <th>City</th>
             <th>Country</th>
             <th>State</th>
@@ -29,7 +20,7 @@ function SolarInfo({ solarInfo }) {
             <tr key={index}>
               <td>{info.name}</td>
               <td>{info.country}</td>
-              <td>{info.state || '-'}</td>
+              <td>{info.state || "-"}</td>
               <td>{info.latitude}</td>
               <td>{info.longitude}</td>
               <td>{info.sunrise}</td>

@@ -71,7 +71,7 @@ function Register() {
 
   return (
     <>
-      <h1>Register</h1>
+      <h1 className='register-page-title'>Register</h1>
       <form onSubmit={handleSubmit}>
         <FormRow
           type='text'
@@ -129,13 +129,16 @@ function Register() {
           onChange={handleChange}
           required
         />
-        <button type='submit' disabled={loading}>
+        <button className='form-register-btn' type='submit' disabled={loading}>
           {loading ? "Registering..." : "Register"}
         </button>
         {message && <p>{message}</p>}
       </form>
-      <p>
-        Already a member? <Link to='/login'>Login</Link>
+      <p className='redirect-msg'>
+        Already a member?{" "}
+        <Link className='redirect-link' to='/login'>
+          Login
+        </Link>
       </p>
     </>
   );

@@ -1,9 +1,9 @@
-import NavLinks from './NavLinks';
+import NavLinks from "./NavLinks";
 
 const Navbar = () => {
   return (
     <nav>
-      <div>
+      <div className='navbar-container'>
         <NavLinks />
       </div>
     </nav>
