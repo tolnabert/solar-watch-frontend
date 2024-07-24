@@ -144,13 +144,16 @@ body {
   align-items: center;
 }
 
-.error-msg,
 .solar-info-list-msg,
+.error-msg,
 .error-msg-time {
   color: #9e0f0f;
   font-weight: bold;
   font-family: "Roboto", sans-serif;
   padding-left: 2vh;
+}
+.error-msg,
+.error-msg-time {
   margin: -1vh;
 }
 
