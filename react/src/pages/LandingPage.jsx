@@ -48,7 +48,6 @@ function LandingPage() {
       setIsLoading(true);
       const result = await fetchGetWithAuth(url, token);
       setData((prevData) => [...result, ...prevData]);
-      console.log(data);
     } catch (error) {
       setError(error);
     } finally {

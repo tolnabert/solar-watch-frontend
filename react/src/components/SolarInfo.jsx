@@ -9,6 +9,7 @@ function SolarInfo({ solarInfo }) {
             <th>City</th>
             <th>Country</th>
             <th>State</th>
+            <th>Date</th>
             <th>Latitude</th>
             <th>Longitude</th>
             <th>Sunrise</th>
@@ -21,6 +22,7 @@ function SolarInfo({ solarInfo }) {
               <td>{info.name}</td>
               <td>{info.country}</td>
               <td>{info.state || "-"}</td>
+              <td>{info.date}</td>
               <td>{info.latitude}</td>
               <td>{info.longitude}</td>
               <td>{info.sunrise}</td>
