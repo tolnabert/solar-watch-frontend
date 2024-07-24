@@ -7,8 +7,7 @@ function Header() {
   const roles = localStorage.getItem("roles");
 
   const handleLogout = () => {
-    localStorage.removeItem("jwtToken");
-    localStorage.removeItem("roles");
+    localStorage.clear();
   };
 
   return (
@@ -20,9 +19,9 @@ function Header() {
             Logout
           </NavLink>
           {roles.includes("ROLE_ADMIN") && (
-            <NavLink className='header-admin-button' to={"/admin"}>
+            <p className='header-admin-button'>
               Admin
-            </NavLink>
+            </p>
           )}
         </div>
       ) : (

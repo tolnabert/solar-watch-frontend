@@ -17,6 +17,7 @@ function AddSolarInfo() {
 
   const [message, setMessage] = useState("");
   const [loading, setLoading] = useState(false);
+  const [errors, setErrors] = useState({});
 
   const handleChange = (e) => {
     setFormData({
@@ -34,17 +35,53 @@ function AddSolarInfo() {
     });
   };
 
+  const validateTime = (time, amPm) => {
+    const [hours, minutes, seconds] = time.split(":").map(Number);
+    if (isNaN(hours) || isNaN(minutes) || isNaN(seconds)) {
+      return false;
+    }
+    if (
+      hours < 1 ||
+      hours > 12 ||
+      minutes < 0 ||
+      minutes > 59 ||
+      seconds < 0 ||
+      seconds > 59
+    ) {
+      return false;
+    }
+    return true;
+  };
+
   const handleSubmit = async (e) => {
     e.preventDefault();
     console.log(formData);
     setLoading(true);
 
     const token = localStorage.getItem("jwtToken");
+    const errors = {};
+
+    const sunriseValid = validateTime(formData.sunrise, formData.sunriseAmPm);
+    const sunsetValid = validateTime(formData.sunset, formData.sunsetAmPm);
+
+    if (!sunriseValid) {
+      errors.sunrise = "Time must be AM/PM format (0:00:00-11:59:59)";
+    }
+
+    if (!sunsetValid) {
+      errors.sunset = "Time must be AM/PM format (0:00:00-11:59:59)";
+    }
+
+    if (Object.keys(errors).length) {
+      setErrors(errors);
+      setLoading(false);
+      return;
+    }
 
     try {
       const formattedSunrise = `${formData.sunrise} ${formData.sunriseAmPm}`;
       const formattedSunset = `${formData.sunset} ${formData.sunsetAmPm}`;
-      console.log(formattedSunrise, formattedSunset);
+
       const solarInfoData = {
         ...formData,
         sunrise: formattedSunrise,
@@ -62,6 +99,7 @@ function AddSolarInfo() {
 
       if (response.ok) {
         setMessage("Solar information added successfully!");
+        setErrors({});
       } else {
         const errorData = await response.json();
         setMessage(errorData.message || "Failed to add solar information");
@@ -74,9 +112,9 @@ function AddSolarInfo() {
     }
   };
   return (
-    <div>
-      <h1>Add Solar Info</h1>
-      <form onSubmit={handleSubmit}>
+    <>
+      <h1 className="solar-info-add-title">Add Solar Info</h1>
+      <form className='solar-info-add-form' onSubmit={handleSubmit}>
         <FormRow
           type='text'
           name='cityName'
@@ -124,50 +162,66 @@ function AddSolarInfo() {
           onChange={handleChange}
           required
         />
-        <div>
-          <label>Sunrise AM/PM:</label>
+        <div className='time-group'>
+          <label className='sunrise-label' htmlFor={name}>
+            Sunrise:
+          </label>
+          <input
+            className='form-input'
+            type='time'
+            step={2}
+            min={0}
+            max={12}
+            id='sunrise'
+            name='sunrise'
+            value={formData.sunrise}
+            onChange={handleChange}
+            required='true'
+          />
           <select
             name='sunriseAmPm'
             value={formData.sunriseAmPm}
             onChange={handleChange}
+            className='am-pm-select'
           >
             <option value='AM'>AM</option>
             <option value='PM'>PM</option>
           </select>
+          {errors.sunrise && <p className='error-msg-time'>{errors.sunrise}</p>}
         </div>
-        <FormRow
-          type='text'
-          name='sunrise'
-          labelText='Sunrise: '
-          value={formData.sunrise}
-          onChange={handleChange}
-          required
-        />
-        <div>
-          <label>Sunset AM/PM:</label>
+        <div className='time-group'>
+          <label className='sunset-label' htmlFor={name}>
+            Sunset:
+          </label>
+          <input
+            className='form-input'
+            type='time'
+            step={2}
+            min={0}
+            max={12}
+            id='sunset'
+            name='sunset'
+            value={formData.sunset}
+            onChange={handleChange}
+            required='true'
+          />
           <select
             name='sunsetAmPm'
             value={formData.sunsetAmPm}
             onChange={handleChange}
+            className='am-pm-select'
           >
             <option value='AM'>AM</option>
             <option value='PM'>PM</option>
           </select>
+          {errors.sunset && <p className='error-msg-time'>{errors.sunset}</p>}
         </div>
-        <FormRow
-          type='text'
-          name='sunset'
-          labelText='Sunset: '
-          value={formData.sunset}
-          onChange={handleChange}
-          required
-        />
-        <button type='submit' disabled={loading}>
+        <button className="form-add-btn" type='submit' disabled={loading}>
           {loading ? "Adding..." : "Add"}
         </button>
         {message && <p>{message}</p>}
       </form>
-    </div>
+    </>
   );
 }
 export default AddSolarInfo;

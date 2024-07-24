@@ -1,12 +1,21 @@
-export const links = [
-  { href: "/", label: "find solar info" },
-  { href: "/about-us", label: "about us" },
-  { href: "/contact", label: "contact" },
-  { href: "/security", label: "change password" },
+export const userLinks = [
+  { href: "/search", label: "find solar info" },
+  { href: "/about-us", label: "About us" },
+  { href: "/contact", label: "Contact" },
+  { href: "/security", label: "Change password" },
 ];
 
 export const adminLinks = [
-  { href: "/admin", label: "add solar info" },
+  { href: "/search", label: "find solar info" },
+  { href: "/about-us", label: "About us" },
+  { href: "/contact", label: "Contact" },
+  { href: "/security", label: "Change password" },
+  { href: "/admin", label: "Add solar info" },
   { href: "/admin/list", label: "List solar info" },
 ];
+
+export const guestLinks = [
+  { href: "/about-us", label: "About us" },
+  { href: "/contact", label: "Contact" },
+]
 
