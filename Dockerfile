@@ -1,25 +1,17 @@
-# Builder stage for Express backend
-FROM node:18 AS express-builder
-WORKDIR /app/express
-COPY express/package.json .
-COPY express/package-lock.json .
+FROM node:18 AS builder
+WORKDIR /express
+COPY package.json .
 RUN npm install
-COPY express/ .
-
-# Builder stage for React frontend
-FROM node:18 AS react-builder
-WORKDIR /app/react
-COPY react/package.json .
-COPY react/package-lock.json .
+COPY . .
+WORKDIR /react
+COPY package.json .
 RUN npm install
-COPY react/ .
+COPY . .
 RUN npm run build
+RUN cp -r build ./express/dist
 
-# Final stage
-FROM node:18-slim
-WORKDIR /app
-COPY --from=express-builder /app/express /app/express
-COPY --from=react-builder /app/react/dist /app/express/dist
-WORKDIR /app/express
+FROM node:slim
+WORKDIR /express
+COPY --from=builder /express ./
 CMD ["node", "index.js"]
 EXPOSE 5000
