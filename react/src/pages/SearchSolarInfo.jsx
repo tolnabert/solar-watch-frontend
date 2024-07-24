@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import "../index.css";
 import FormRow from "../components/FormRow";
 import SolarInfo from "../components/SolarInfo";
@@ -18,6 +18,20 @@ function LandingPage() {
     date: new Date().toISOString().slice(0, 10),
   });
 
+  useEffect(() => {
+    const token = localStorage.getItem("jwtToken");
+    const roles = localStorage.getItem("roles");
+
+    if (!token) {
+      navigate("/login");
+      return;
+    }
+    if(roles.includes("ROLE_ADMIN") || roles.includes("ROLE_USER")) {
+      return;
+    } 
+
+  }, [navigate]);
+
   const handleChange = (e) => {
     setFormData({
       ...formData,
@@ -36,12 +50,6 @@ function LandingPage() {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    const token = localStorage.getItem("jwtToken");
-
-    if (!token) {
-      navigate("/login");
-      return;
-    }
 
     const url = `/api/solar-info?city=${formData.cityName}&country=${formData.country}&state=${formData.state}&date=${formData.date}`;
     try {

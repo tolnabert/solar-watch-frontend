@@ -1,13 +1,15 @@
-import { NavLink } from "react-router-dom";
+import { NavLink, useNavigate } from "react-router-dom";
 import Logo from "./Logo";
 import "../index.css";
 
 function Header() {
+  const navigate = useNavigate();
   const isLoggedIn = localStorage.getItem("jwtToken") !== null;
   const roles = localStorage.getItem("roles");
 
   const handleLogout = () => {
     localStorage.clear();
+    navigate("/");
   };
 
   return (

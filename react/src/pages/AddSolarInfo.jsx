@@ -1,7 +1,9 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import FormRow from "../components/FormRow";
+import { useNavigate } from "react-router-dom";
 
 function AddSolarInfo() {
+  const navigate = useNavigate();
   const [formData, setFormData] = useState({
     cityName: "",
     country: "",
@@ -18,6 +20,22 @@ function AddSolarInfo() {
   const [message, setMessage] = useState("");
   const [loading, setLoading] = useState(false);
   const [errors, setErrors] = useState({});
+  const token = localStorage.getItem("jwtToken");
+
+  useEffect(() => {
+    const roles = localStorage.getItem("roles");
+
+    if (!token) {
+      navigate("/login");
+      return;
+    }
+
+    if (roles.includes("ROLE_ADMIN")) {
+      return;
+    }
+
+    navigate("/");
+  }, [navigate]);
 
   const handleChange = (e) => {
     setFormData({
@@ -55,10 +73,8 @@ function AddSolarInfo() {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    console.log(formData);
     setLoading(true);
 
-    const token = localStorage.getItem("jwtToken");
     const errors = {};
 
     const sunriseValid = validateTime(formData.sunrise, formData.sunriseAmPm);
@@ -113,7 +129,7 @@ function AddSolarInfo() {
   };
   return (
     <>
-      <h1 className="solar-info-add-title">Add Solar Info</h1>
+      <h1 className='solar-info-add-title'>Add Solar Info</h1>
       <form className='solar-info-add-form' onSubmit={handleSubmit}>
         <FormRow
           type='text'
@@ -216,7 +232,7 @@ function AddSolarInfo() {
           </select>
           {errors.sunset && <p className='error-msg-time'>{errors.sunset}</p>}
         </div>
-        <button className="form-add-btn" type='submit' disabled={loading}>
+        <button className='form-add-btn' type='submit' disabled={loading}>
           {loading ? "Adding..." : "Add"}
         </button>
         {message && <p>{message}</p>}
