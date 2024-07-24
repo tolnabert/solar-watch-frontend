@@ -2,94 +2,6 @@ body {
   background-color: #298bae;
 }
 
-.header-logo {
-  border: none;
-  cursor: pointer;
-}
-
-.header-button {
-  color: wheat;
-  border: none;
-  cursor: pointer;
-  text-decoration: none;
-  transition: background-color 0.2s ease-in-out;
-}
-
-.header-button:hover {
-  background-color: rgb(40, 77, 164);
-}
-
-.header-logout-button {
-  display: flex;
-  justify-content: space-between;
-  padding: 2vh;
-  text-decoration: none;
-  font-size: 3.5vh;
-  color: wheat;
-  font-family: "Roboto", sans-serif;
-  transition: background-color 0.2s ease-in-out;
-  border-radius: 5px;
-}
-
-.header-logout-button:hover {
-  background-color: rgb(40, 77, 164);
-}
-
-.header-admin-button {
-  position: absolute;
-  color: wheat;
-  background-color: #ad7401;
-  padding: 2vh;
-  top: 0.5vh;
-  right: 21.5vh;
-  font-size: 3.5vh;
-  font-family: "Roboto", sans-serif;
-  border: none;
-  cursor: default;
-  border-radius: 25px;
-}
-
-.header-login-button {
-  display: flex;
-  justify-content: space-between;
-  padding: 2vh;
-  text-decoration: none;
-  font-size: 3.5vh;
-  color: wheat;
-  font-family: "Roboto", sans-serif;
-  transition: background-color 0.2s ease-in-out;
-  border-radius: 5px;
-}
-
-.header-login-button:hover {
-  background-color: rgb(40, 77, 164);
-}
-
-.header-register-button {
-  display: flex;
-  justify-content: space-between;
-  padding: 2vh;
-  text-decoration: none;
-  font-size: 3.5vh;
-  color: wheat;
-  font-family: "Roboto", sans-serif;
-  transition: background-color 0.2s ease-in-out;
-  position: absolute;
-  top: 4vh;
-  right: 20vh;
-  border-radius: 5px;
-}
-
-.header-register-button:hover {
-  background-color: rgb(40, 77, 164);
-}
-
-.header-logo-img {
-  width: 8vh;
-  height: 8vh;
-  border-radius: 5px;
-}
-
 .header {
   display: flex;
   justify-content: space-between;
@@ -98,6 +10,70 @@ body {
   background-color: #cf9217;
   border: none;
   border-radius: 5px;
+}
+
+.header-logo {
+  border: none;
+  cursor: pointer;
+}
+
+.header-logo-img {
+  width: 8vh;
+  height: 8vh;
+  border-radius: 5px;
+}
+
+/* .header-button {
+  color: wheat;
+  border: none;
+  cursor: pointer;
+  text-decoration: none;
+  transition: background-color 0.2s ease-in-out;
+} */
+
+/* .header-button:hover {
+  background-color: rgb(40, 77, 164);
+} */
+
+.header-register-button {
+  position: absolute;
+  top: 4vh;
+  right: 20vh;
+  border-radius: 5px;
+}
+
+.header-logout-button,
+.header-login-button,
+.header-register-button {
+  background-color: #ad7401;
+  display: flex;
+  justify-content: space-between;
+  padding: 2vh;
+  text-decoration: none;
+  font-size: 3.5vh;
+  color: wheat;
+  font-family: "Roboto", sans-serif;
+  transition: background-color 0.2s ease-in-out;
+  border-radius: 5px;
+}
+.header-logout-button:hover,
+.header-login-button:hover,
+.header-register-button:hover {
+  background-color: rgb(40, 77, 164);
+}
+
+.header-admin-button {
+  /*it is not a button*/
+  background-color: #ad7401;
+  padding: 2vh;
+  font-size: 3.5vh;
+  color: wheat;
+  font-family: "Roboto", sans-serif;
+  position: absolute;
+  top: 0.5vh;
+  right: 21.5vh;
+  cursor: default;
+  border-radius: 25px;
 }
 
 .navbar-container {
@@ -120,11 +96,9 @@ body {
   border-radius: 5px;
   margin-right: 1vh;
 }
-
 .navlink-label:hover {
   background-color: rgb(40, 77, 164);
 }
-
 .navlink-selected {
   background-color: #cf9217;
 }
@@ -155,7 +129,6 @@ body {
 .solar-info-table tbody tr:nth-child(even) {
   background-color: #9fcada;
 }
-
 .solar-info-table tbody tr:nth-child(odd) {
   background-color: #ccb076;
 }
@@ -172,17 +145,24 @@ body {
 }
 
 .error-msg,
-.solar-info-list-msg {
-  color: red;
+.solar-info-list-msg,
+.error-msg-time {
+  color: #9e0f0f;
   font-weight: bold;
   font-family: "Roboto", sans-serif;
+  padding-left: 2vh;
+  margin: -1vh;
 }
 
-.solar-info-list-title,
-.solar-info-add-title {
-  color: aqua;
+.error-msg-login,
+.error-msg-register {
+  color: #9e0f0f;
+  font-weight: bold;
   font-family: "Roboto", sans-serif;
-  margin: 2vh;
+  padding-left: 2vh;
+  margin: -1vh;
+  margin-top: 1vh;
+  margin-bottom: 1vh;
 }
 
 .solar-info-title-warning {
@@ -191,10 +171,34 @@ body {
   font-family: "Roboto", sans-serif;
 }
 
+.solar-info-list-title,
+.solar-info-add-title,
+.login-page-title,
+.register-page-title,
+.register-msg,
+.login-msg {
+  color: aqua;
+  font-family: "Roboto", sans-serif;
+  margin: 2vh;
+}
+
+.register-msg,
+.login-msg {
+  margin: 1vh;
+}
+
+/* .error-msg-time {
+  color: red;
+  font-weight: bold;
+  font-family: "Roboto", sans-serif;
+  padding-left: 2vh;
+  margin: -1vh;
+} */
+
 .solar-info-add-form {
   flex-direction: column;
   margin: 1vh;
-  width: 35%;
+  width: 60%;
 }
 
 .form-label {
@@ -242,21 +246,6 @@ body {
   background-color: rgb(40, 77, 164);
 }
 
-
-.login-page-title,
-.register-page-title {
-  color: aqua;
-  font-family: "Roboto", sans-serif;
-  margin: 1vh;
-}
-
-.register-msg,
-.login-msg {
-  color: aqua;
-  font-family: "Roboto", sans-serif;
-  margin: 1vh;
-}
-
 .register-link,
 .login-link {
   color: #cf9217;
@@ -273,7 +262,7 @@ body {
 .sunrise-label,
 .sunset-label {
   margin: 1vh;
-  color : wheat;
+  color: wheat;
   font-family: "Roboto", sans-serif;
   font-size: 3.5vh;
 }
@@ -284,13 +273,5 @@ body {
 }
 
 .time-group .am-pm-select {
-  margin-left: 1vh; /* Space between input and select */
-}
-
-.error-msg-time {
-  color: red;
-  font-weight: bold;
-  font-family: "Roboto", sans-serif;
-  padding-left: 2vh;
-  margin: -1vh;
+  margin-left: 1vh;
 }
