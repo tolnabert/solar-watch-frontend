@@ -132,7 +132,7 @@ function Register() {
         <button className='form-register-btn' type='submit' disabled={loading}>
           {loading ? "Registering..." : "Register"}
         </button>
-        {message && <p>{message}</p>}
+        {message && <p className="error-msg-register">{message}</p>}
       </form>
       <p className='register-msg'>
         Already a member?{" "}
