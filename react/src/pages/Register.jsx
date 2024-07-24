@@ -134,9 +134,9 @@ function Register() {
         </button>
         {message && <p>{message}</p>}
       </form>
-      <p className='redirect-msg'>
+      <p className='register-msg'>
         Already a member?{" "}
-        <Link className='redirect-link' to='/login'>
+        <Link className='register-link' to='/login'>
           Login
         </Link>
       </p>

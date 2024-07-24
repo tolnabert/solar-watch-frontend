@@ -38,7 +38,7 @@ function Login() {
         console.log(data);
         localStorage.setItem("jwtToken", data.jwt);
         localStorage.setItem("roles", data.roles);
-        navigate("/");
+        navigate("/search");
       } else {
         setErrorMessage("Incorrect username or password");
       }
@@ -75,9 +75,9 @@ function Login() {
         </button>
         {errorMessage && <p>{errorMessage}</p>}
       </form>
-      <p className='redirect-msg'>
+      <p className='login-msg'>
         Not a member yet?{" "}
-        <Link className='redirect-link' to='/register'>
+        <Link className='login-link' to='/register'>
           register
         </Link>
       </p>

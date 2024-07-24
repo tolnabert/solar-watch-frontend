@@ -25,11 +25,11 @@ function ListSolarInfo() {
 
   return (
     <div className="solar-info-container">
-      <h2>Solar Information</h2>
+      <h1 className="solar-info-list-title">Solar Information</h1>
       {solarInfo.length > 0 ? (
         <SolarInfo solarInfo={solarInfo} />
       ) : (
-        <p>No solar information available</p>
+        <p className="solar-info-list-msg">No solar information available</p>
       )}
     </div>
   );

@@ -40,18 +40,13 @@ body {
   color: wheat;
   background-color: #ad7401;
   padding: 2vh;
-  border: none;
-  cursor: pointer;
-  top: 4vh;
+  top: 0.5vh;
   right: 21.5vh;
   font-size: 3.5vh;
-  text-decoration: none;
   font-family: "Roboto", sans-serif;
-  border-radius: 5px;
-}
-
-.header-admin-button:hover {
-  background-color: rgb(40, 77, 164);
+  border: none;
+  cursor: default;
+  border-radius: 25px;
 }
 
 .header-login-button {
@@ -176,13 +171,15 @@ body {
   align-items: center;
 }
 
-.error-msg {
+.error-msg,
+.solar-info-list-msg {
   color: red;
   font-weight: bold;
   font-family: "Roboto", sans-serif;
 }
 
-.solar-info-title {
+.solar-info-list-title,
+.solar-info-add-title {
   color: aqua;
   font-family: "Roboto", sans-serif;
   margin: 2vh;
@@ -192,6 +189,12 @@ body {
   color: #9e0f0f;
   margin: 2vh;
   font-family: "Roboto", sans-serif;
+}
+
+.solar-info-add-form {
+  flex-direction: column;
+  margin: 1vh;
+  width: 35%;
 }
 
 .form-label {
@@ -211,19 +214,8 @@ body {
   outline: none;
 }
 
-.form-btn {
-  font-size: 3.5vh;
-  font-family: "Roboto", sans-serif;
-  color: wheat;
-  background-color: #cf9217;
-  border: none;
-  cursor: pointer;
-  padding: 1vh;
-  border-radius: 5px;
-  padding-left: 1.5vh;
-  padding-right: 1.5vh;
-}
-
+.form-btn,
+.form-add-btn,
 .form-login-btn,
 .form-register-btn {
   font-size: 3.5vh;
@@ -234,8 +226,22 @@ body {
   cursor: pointer;
   padding: 1vh;
   border-radius: 5px;
+  padding-left: 1.5vh;
+  padding-right: 1.5vh;
+  transition: background-color 0.2s ease-in-out;
   margin: 1vh;
 }
+.form-add-btn {
+  width: 30%;
+}
+
+.form-btn:hover,
+.form-add-btn:hover,
+.form-login-btn:hover,
+.form-register-btn:hover {
+  background-color: rgb(40, 77, 164);
+}
+
 
 .login-page-title,
 .register-page-title {
@@ -244,16 +250,47 @@ body {
   margin: 1vh;
 }
 
-.redirect-msg {
+.register-msg,
+.login-msg {
   color: aqua;
   font-family: "Roboto", sans-serif;
   margin: 1vh;
 }
 
-.redirect-link {
+.register-link,
+.login-link {
   color: #cf9217;
-  font-family: "Roboto", sans-serif;
   text-decoration: none;
-  transition: color 0.2s ease-in-out;
   text-transform: capitalize;
+  cursor: pointer;
+  transition: color 0.2s ease-in-out;
+}
+.register-link:hover,
+.login-link:hover {
+  color: rgb(40, 77, 164);
+}
+
+.sunrise-label,
+.sunset-label {
+  margin: 1vh;
+  color : wheat;
+  font-family: "Roboto", sans-serif;
+  font-size: 3.5vh;
+}
+
+.time-group {
+  display: flex;
+  align-items: center;
+}
+
+.time-group .am-pm-select {
+  margin-left: 1vh; /* Space between input and select */
+}
+
+.error-msg-time {
+  color: red;
+  font-weight: bold;
+  font-family: "Roboto", sans-serif;
+  padding-left: 2vh;
+  margin: -1vh;
 }
