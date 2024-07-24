@@ -1,259 +1,259 @@
 body {
-    background-color: #298bae;
+  background-color: #298bae;
 }
 
 .header-logo {
-    border: none;
-    cursor: pointer;
-  }
-  
-  .header-button {
-    color: wheat;
-    border: none;
-    cursor: pointer;
-    text-decoration: none;
-    transition: background-color 0.2s ease-in-out;
-  }
-  
-  .header-button:hover {
-    background-color: rgb(40, 77, 164);
-  }
-  
-  .header-logout-button {
-    display: flex;
-    justify-content: space-between;
-    padding: 2vh;
-    text-decoration: none;
-    font-size: 3.5vh;
-    color: wheat;
-    font-family: "Roboto", sans-serif;
-    transition: background-color 0.2s ease-in-out;
-    border-radius: 5px;
-  }
-  
-  .header-logout-button:hover {
-    background-color: rgb(40, 77, 164);
-  }
-  
-  .header-admin-button {
-    position: absolute;
-    color: wheat;
-    background-color: #ad7401;
-    padding: 2vh;
-    border: none;
-    cursor: pointer;
-    top: 4vh;
-    right: 21.5vh;
-    font-size: 3.5vh;
-    text-decoration: none;
-    font-family: "Roboto", sans-serif;
-    border-radius: 5px;
-  }
-  
-  .header-admin-button:hover {
-    background-color: rgb(40, 77, 164);
-  }
-  
-  .header-login-button {
-    display: flex;
-    justify-content: space-between;
-    padding: 2vh;
-    text-decoration: none;
-    font-size: 3.5vh;
-    color: wheat;
-    font-family: "Roboto", sans-serif;
-    transition: background-color 0.2s ease-in-out;
-    border-radius: 5px;
-  }
-  
-  .header-login-button:hover {
-    background-color: rgb(40, 77, 164);
-  }
-  
-  .header-register-button {
-    display: flex;
-    justify-content: space-between;
-    padding: 2vh;
-    text-decoration: none;
-    font-size: 3.5vh;
-    color: wheat;
-    font-family: "Roboto", sans-serif;
-    transition: background-color 0.2s ease-in-out;
-    position: absolute;
-    top: 4vh;
-    right: 20vh;
-    border-radius: 5px;
-  }
-  
-  .header-register-button:hover {
-    background-color: rgb(40, 77, 164);
-  }
-  
-  .header-logo-img {
-    width: 8vh;
-    height: 8vh;
-    border-radius: 5px;
-  }
-  
-  .header {
-    display: flex;
-    justify-content: space-between;
-    padding: 2vh;
-    margin: 2vh;
-    background-color: #cf9217;
-    border: none;
-    cursor: pointer;
-    border-radius: 5px;
-  }
-  
-  .navbar-container {
-    justify-content: space-between;
-    padding: 1.5vh;
-    margin: 2vh;
-    background-color: #179ecf;
-    border: none;
-    border-radius: 5px;
-  }
-  
-  .navlink-label {
-    font-size: 3.5vh;
-    text-decoration: none;
-    padding: 1.5vh;
-    font-family: "Roboto", sans-serif;
-    text-transform: capitalize;
-    color: wheat;
-    transition: background-color 0.2s ease-in-out;
-    border-radius: 5px;
-    margin-right: 1vh;
-  }
-  
-  .navlink-label:hover {
-    background-color: rgb(40, 77, 164);
-  }
-  
-  .navlink-selected {
-    background-color: #cf9217;
-  }
-  
-  .solar-info-table {
-    width: 98%;
-    border-collapse: collapse;
-    margin: 2vh;
-  }
-  
-  .solar-info-table-label th {
-    color: cadetblue;
-    background-color: wheat;
-    border: 1px solid #cf9217;
-    padding: 1vh;
-    text-align: left;
-    font-family: "Roboto", sans-serif;
-  }
-  
-  .solar-info-table td {
-    border: 1px solid #cf9217;
-    padding: 1vh;
-    text-align: left;
-    color: rgb(66, 50, 205);
-    font-family: "Roboto", sans-serif;
-  }
-  
-  .solar-info-table tbody tr:nth-child(even) {
-    background-color: #9fcada;
-  }
-  
-  .solar-info-table tbody tr:nth-child(odd) {
-    background-color: #ccb076;
-  }
-  
-  .search-solar-info {
-    display: flex;
-    justify-content: space-between;
-    padding: 2vh;
-    margin: 2vh;
-    background-color: #179ecf;
-    border: none;
-    border-radius: 5px;
-    align-items: center;
-  }
-  
-  .error-msg {
-    color: red;
-    font-weight: bold;
-    font-family: "Roboto", sans-serif;
-  }
-  
-  .solar-info-title {
-    color: aqua;
-    font-family: "Roboto", sans-serif;
-    margin: 2vh;
-  }
-  
-  .solar-info-title-warning {
-    color: #9e0f0f;
-    margin: 2vh;
-    font-family: "Roboto", sans-serif;
-  }
-  
-  .form-label {
-    font-size: 3.5vh;
-    font-family: "Roboto", sans-serif;
-    color: wheat;
-    margin: 1vh;
-  }
-  
-  .form-input {
-    font-family: "Roboto", sans-serif;
-    border-radius: 5px;
-    padding: 1vh;
-  }
-  
-  .form-input:focus {
-    outline: none;
-  }
-  
-  .form-btn {
-    font-size: 3.5vh;
-    font-family: "Roboto", sans-serif;
-    color: wheat;
-    background-color: #cf9217;
-    border: none;
-    cursor: pointer;
-    padding: 1vh;
-    border-radius: 5px;
-  }
-  
-  .form-login-btn,
-  .form-register-btn {
-    font-size: 3.5vh;
-    font-family: "Roboto", sans-serif;
-    color: wheat;
-    background-color: #cf9217;
-    border: none;
-    cursor: pointer;
-    padding: 1vh;
-    border-radius: 5px;
-    margin: 1vh;
-  }
-  
-  .login-page-title,
-  .register-page-title {
-    color: aqua;
-    font-family: "Roboto", sans-serif;
-    margin: 1vh;
-  }
-  
-  .redirect-msg {
-    color: aqua;
-    font-family: "Roboto", sans-serif;
-    margin: 1vh;
-  }
-  
-  .redirect-link {
-    color: #cf9217;
-    font-family: "Roboto", sans-serif;
-    text-decoration: none;
-    transition: color 0.2s ease-in-out;
-    text-transform: capitalize;
-  }
-  
+  border: none;
+  cursor: pointer;
+}
+
+.header-button {
+  color: wheat;
+  border: none;
+  cursor: pointer;
+  text-decoration: none;
+  transition: background-color 0.2s ease-in-out;
+}
+
+.header-button:hover {
+  background-color: rgb(40, 77, 164);
+}
+
+.header-logout-button {
+  display: flex;
+  justify-content: space-between;
+  padding: 2vh;
+  text-decoration: none;
+  font-size: 3.5vh;
+  color: wheat;
+  font-family: "Roboto", sans-serif;
+  transition: background-color 0.2s ease-in-out;
+  border-radius: 5px;
+}
+
+.header-logout-button:hover {
+  background-color: rgb(40, 77, 164);
+}
+
+.header-admin-button {
+  position: absolute;
+  color: wheat;
+  background-color: #ad7401;
+  padding: 2vh;
+  border: none;
+  cursor: pointer;
+  top: 4vh;
+  right: 21.5vh;
+  font-size: 3.5vh;
+  text-decoration: none;
+  font-family: "Roboto", sans-serif;
+  border-radius: 5px;
+}
+
+.header-admin-button:hover {
+  background-color: rgb(40, 77, 164);
+}
+
+.header-login-button {
+  display: flex;
+  justify-content: space-between;
+  padding: 2vh;
+  text-decoration: none;
+  font-size: 3.5vh;
+  color: wheat;
+  font-family: "Roboto", sans-serif;
+  transition: background-color 0.2s ease-in-out;
+  border-radius: 5px;
+}
+
+.header-login-button:hover {
+  background-color: rgb(40, 77, 164);
+}
+
+.header-register-button {
+  display: flex;
+  justify-content: space-between;
+  padding: 2vh;
+  text-decoration: none;
+  font-size: 3.5vh;
+  color: wheat;
+  font-family: "Roboto", sans-serif;
+  transition: background-color 0.2s ease-in-out;
+  position: absolute;
+  top: 4vh;
+  right: 20vh;
+  border-radius: 5px;
+}
+
+.header-register-button:hover {
+  background-color: rgb(40, 77, 164);
+}
+
+.header-logo-img {
+  width: 8vh;
+  height: 8vh;
+  border-radius: 5px;
+}
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  padding: 2vh;
+  margin: 2vh;
+  background-color: #cf9217;
+  border: none;
+  border-radius: 5px;
+}
+
+.navbar-container {
+  justify-content: space-between;
+  padding: 1.5vh;
+  margin: 2vh;
+  background-color: #179ecf;
+  border: none;
+  border-radius: 5px;
+}
+
+.navlink-label {
+  font-size: 3.5vh;
+  text-decoration: none;
+  padding: 1.5vh;
+  font-family: "Roboto", sans-serif;
+  text-transform: capitalize;
+  color: wheat;
+  transition: background-color 0.2s ease-in-out;
+  border-radius: 5px;
+  margin-right: 1vh;
+}
+
+.navlink-label:hover {
+  background-color: rgb(40, 77, 164);
+}
+
+.navlink-selected {
+  background-color: #cf9217;
+}
+
+.solar-info-table {
+  width: 98%;
+  border-collapse: collapse;
+  margin: 2vh;
+}
+
+.solar-info-table-label th {
+  color: cadetblue;
+  background-color: wheat;
+  border: 1px solid #cf9217;
+  padding: 1vh;
+  text-align: left;
+  font-family: "Roboto", sans-serif;
+}
+
+.solar-info-table td {
+  border: 1px solid #cf9217;
+  padding: 1vh;
+  text-align: left;
+  color: rgb(66, 50, 205);
+  font-family: "Roboto", sans-serif;
+}
+
+.solar-info-table tbody tr:nth-child(even) {
+  background-color: #9fcada;
+}
+
+.solar-info-table tbody tr:nth-child(odd) {
+  background-color: #ccb076;
+}
+
+.search-solar-info {
+  display: flex;
+  justify-content: space-between;
+  padding: 2vh;
+  margin: 2vh;
+  background-color: #179ecf;
+  border: none;
+  border-radius: 5px;
+  align-items: center;
+}
+
+.error-msg {
+  color: red;
+  font-weight: bold;
+  font-family: "Roboto", sans-serif;
+}
+
+.solar-info-title {
+  color: aqua;
+  font-family: "Roboto", sans-serif;
+  margin: 2vh;
+}
+
+.solar-info-title-warning {
+  color: #9e0f0f;
+  margin: 2vh;
+  font-family: "Roboto", sans-serif;
+}
+
+.form-label {
+  font-size: 3.5vh;
+  font-family: "Roboto", sans-serif;
+  color: wheat;
+  margin: 1vh;
+}
+
+.form-input {
+  font-family: "Roboto", sans-serif;
+  border-radius: 5px;
+  padding: 1vh;
+}
+
+.form-input:focus {
+  outline: none;
+}
+
+.form-btn {
+  font-size: 3.5vh;
+  font-family: "Roboto", sans-serif;
+  color: wheat;
+  background-color: #cf9217;
+  border: none;
+  cursor: pointer;
+  padding: 1vh;
+  border-radius: 5px;
+  padding-left: 1.5vh;
+  padding-right: 1.5vh;
+}
+
+.form-login-btn,
+.form-register-btn {
+  font-size: 3.5vh;
+  font-family: "Roboto", sans-serif;
+  color: wheat;
+  background-color: #cf9217;
+  border: none;
+  cursor: pointer;
+  padding: 1vh;
+  border-radius: 5px;
+  margin: 1vh;
+}
+
+.login-page-title,
+.register-page-title {
+  color: aqua;
+  font-family: "Roboto", sans-serif;
+  margin: 1vh;
+}
+
+.redirect-msg {
+  color: aqua;
+  font-family: "Roboto", sans-serif;
+  margin: 1vh;
+}
+
+.redirect-link {
+  color: #cf9217;
+  font-family: "Roboto", sans-serif;
+  text-decoration: none;
+  transition: color 0.2s ease-in-out;
+  text-transform: capitalize;
+}
