@@ -10,6 +10,7 @@ function LandingPage() {
   const [data, setData] = useState([]);
   const [error, setError] = useState(null);
   const [isLoading, setIsLoading] = useState(false);
+  const token = localStorage.getItem("jwtToken");
 
   const [formData, setFormData] = useState({
     cityName: "",
@@ -19,7 +20,6 @@ function LandingPage() {
   });
 
   useEffect(() => {
-    const token = localStorage.getItem("jwtToken");
     const roles = localStorage.getItem("roles");
 
     if (!token) {
