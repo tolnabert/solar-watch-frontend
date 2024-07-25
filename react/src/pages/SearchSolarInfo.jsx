@@ -5,11 +5,12 @@ import SolarInfo from "../components/SolarInfo";
 import { fetchGetWithAuth } from "../fetchMethods";
 import { useNavigate } from "react-router-dom";
 
-function LandingPage() {
+function SearchSolarInfo() {
   const navigate = useNavigate();
   const [data, setData] = useState([]);
   const [error, setError] = useState(null);
   const [isLoading, setIsLoading] = useState(false);
+  const token = localStorage.getItem("jwtToken");
 
   const [formData, setFormData] = useState({
     cityName: "",
@@ -19,7 +20,6 @@ function LandingPage() {
   });
 
   useEffect(() => {
-    const token = localStorage.getItem("jwtToken");
     const roles = localStorage.getItem("roles");
 
     if (!token) {
@@ -124,4 +124,4 @@ function LandingPage() {
   );
 }
 
-export default LandingPage;
+export default SearchSolarInfo;
