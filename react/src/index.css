@@ -23,18 +23,6 @@ body {
   border-radius: 5px;
 }
 
-/* .header-button {
-  color: wheat;
-  border: none;
-  cursor: pointer;
-  text-decoration: none;
-  transition: background-color 0.2s ease-in-out;
-} */
-
-/* .header-button:hover {
-  background-color: rgb(40, 77, 164);
-} */
-
 .header-register-button {
   position: absolute;
   top: 4vh;
@@ -157,9 +145,20 @@ body {
   margin: -1vh;
 }
 
-.error-msg-login,
-.error-msg-register {
+.message-login.error,
+.message-register.error {
   color: #9e0f0f;
+  font-weight: bold;
+  font-family: "Roboto", sans-serif;
+  padding-left: 2vh;
+  margin: -1vh;
+  margin-top: 1vh;
+  margin-bottom: 1vh;
+}
+
+.message-login.success,
+.message-register.success {
+  color: #28c10d;
   font-weight: bold;
   font-family: "Roboto", sans-serif;
   padding-left: 2vh;
@@ -189,14 +188,6 @@ body {
 .login-msg {
   margin: 1vh;
 }
-
-/* .error-msg-time {
-  color: red;
-  font-weight: bold;
-  font-family: "Roboto", sans-serif;
-  padding-left: 2vh;
-  margin: -1vh;
-} */
 
 .solar-info-add-form {
   flex-direction: column;

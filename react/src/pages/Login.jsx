@@ -10,8 +10,9 @@ function Login() {
     password: "asd",
   });
 
-  const [errorMessage, setErrorMessage] = useState("");
   const [loading, setLoading] = useState(false);
+  const [message, setMessage] = useState("");
+  const [messageType, setMessageType] = useState("");
 
   const handleChange = (e) => {
     setFormData({
@@ -23,6 +24,8 @@ function Login() {
   const handleSubmit = async (e) => {
     e.preventDefault();
     setLoading(true);
+    setMessage("");
+    setMessageType("");
 
     try {
       const response = await fetch("/api/auth/login", {
@@ -38,13 +41,19 @@ function Login() {
         console.log(data);
         localStorage.setItem("jwtToken", data.jwt);
         localStorage.setItem("roles", data.roles);
-        navigate("/search");
+        setMessage("Login successful! Redirecting to landing page.");
+        setMessageType("success");
+        setTimeout(() => {
+          navigate("/search");
+        }, 1500);
       } else {
-        setErrorMessage("Incorrect username or password");
+        setMessage("Incorrect username or password");
+        setMessageType("error");
       }
     } catch (error) {
       console.error("An error occurred:", error);
-      setErrorMessage("An error occurred while logging in");
+      setMessage("An error occurred while logging in");
+      setMessageType("error");
     } finally {
       setLoading(false);
     }
@@ -73,7 +82,15 @@ function Login() {
         <button className='form-login-btn' type='submit' disabled={loading}>
           {loading ? "Logging in..." : "Login"}
         </button>
-        {errorMessage && <p className="error-msg-login">{errorMessage}</p>}
+        {message && (
+          <p
+            className={`message-login ${
+              messageType === "error" ? "error" : "success"
+            }`}
+          >
+            {message}
+          </p>
+        )}
       </form>
       <p className='login-msg'>
         Not a member yet?{" "}
