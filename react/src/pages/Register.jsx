@@ -17,6 +17,7 @@ function Register() {
 
   const [loading, setLoading] = useState(false);
   const [message, setMessage] = useState("");
+  const [messageType, setMessageType] = useState("");
 
   const handleChange = (e) => {
     setFormData({
@@ -38,12 +39,14 @@ function Register() {
     e.preventDefault();
 
     if (formData.password !== formData.passwordConfirmation) {
-      setMessage("Passwords do not match");
+      setMessage("Passwords must match");
+      setMessageType("error");
       return;
     }
 
     setLoading(true);
     setMessage("");
+    setMessageType("");
     try {
       const response = await fetch("/api/auth/register", {
         method: "POST",
@@ -55,15 +58,25 @@ function Register() {
 
       if (response.ok) {
         setMessage("Registration successful! You can now login.");
-
-        navigate("/login");
+        setMessageType("success");
+        setTimeout(() => {
+          navigate("/login");
+        }, 1500);
       } else {
         const data = await response.json();
-        setMessage(data.message || "Failed to register");
+        if (data.error) {
+          const errors = data.error.split("; ").join("\n");
+          setMessage(errors);
+          setMessageType("error");
+        } else {
+          setMessage("Failed to register");
+          setMessageType("error");
+        }
       }
     } catch (error) {
       console.error("Error during registration:", error);
       setMessage("An error occurred during registration");
+      setMessageType("error");
     } finally {
       setLoading(false);
     }
@@ -132,7 +145,15 @@ function Register() {
         <button className='form-register-btn' type='submit' disabled={loading}>
           {loading ? "Registering..." : "Register"}
         </button>
-        {message && <p className="error-msg-register">{message}</p>}
+        {message && (
+          <p
+            className={`message-register ${
+              messageType === "success" ? "success" : "error"
+            }`}
+          >
+            {message}
+          </p>
+        )}
       </form>
       <p className='register-msg'>
         Already a member?{" "}
