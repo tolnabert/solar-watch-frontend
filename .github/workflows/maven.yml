@@ -28,16 +28,16 @@ jobs:
             ${{ runner.os }}-node-
 
       - name: Install Dependencies
-        run:  |
+        run: |
           cd react
-          npm instal
+          npm install
 
       - name: Build Frontend
-        run:   |
+        run: |
           cd react
           npm run build
 
       - name: Test Frontend
-        run:   |
+        run: |
           cd react
           npm test
