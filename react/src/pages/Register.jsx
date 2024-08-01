@@ -57,9 +57,9 @@ function Register() {
       });
 
       if (response.ok) {
-        setMessage("Registration successful! You can now login.");
+        setMessage("Registration successful! You can now login!");
         setMessageType("success");
-        setTimeout(() => {
+        setTimeout(() => {//for visualization only
           navigate("/login");
         }, 1500);
       } else {

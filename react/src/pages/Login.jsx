@@ -41,9 +41,9 @@ function Login() {
         console.log(data);
         localStorage.setItem("jwtToken", data.jwt);
         localStorage.setItem("roles", data.roles);
-        setMessage("Login successful! Redirecting to landing page.");
+        setMessage("Login successful! Redirecting to landing page!");
         setMessageType("success");
-        setTimeout(() => {
+        setTimeout(() => {//for visualization only
           navigate("/search");
         }, 1500);
       } else {
