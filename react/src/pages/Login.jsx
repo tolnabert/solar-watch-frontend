@@ -6,8 +6,8 @@ function Login() {
   const navigate = useNavigate();
 
   const [formData, setFormData] = useState({
-    username: "user",
-    password: "asd",
+    username: "",
+    password: "",
   });
 
   const [loading, setLoading] = useState(false);
@@ -43,7 +43,7 @@ function Login() {
         localStorage.setItem("roles", data.roles);
         setMessage("Login successful! Redirecting to landing page!");
         setMessageType("success");
-        setTimeout(() => {
+        setTimeout(() => {//only in development for showcase delay
           navigate("/search");
         }, 1500);
       } else {
