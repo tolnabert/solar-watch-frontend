@@ -30,8 +30,4 @@ jobs:
           context: .
           file: Dockerfile
           push: true
-          tags: tolnabert/solarwatch:latest
-          load: true
-
-      - name: Verify Docker image
-        run: docker images
+          tags: tolnabert/solarwatch-frontend:latest
