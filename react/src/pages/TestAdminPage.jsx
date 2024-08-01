@@ -38,7 +38,6 @@ const TestAdminPage = () => {
   return (
     <div>
       <h2>Admin Test Page</h2>
-      <h2>CI and Dockerization worked</h2>
       {adminData && <p>Admin Username: {adminData}</p>}
     </div>
   );
