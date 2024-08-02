@@ -59,7 +59,8 @@ function Register() {
       if (response.ok) {
         setMessage("Registration successful! You can now login!");
         setMessageType("success");
-        setTimeout(() => {//only in development for showcase delay
+        setTimeout(() => {
+          //only in development for showcase delay
           navigate("/login");
         }, 1500);
       } else {
@@ -91,6 +92,7 @@ function Register() {
           name='firstName'
           labelText='First Name: '
           value={formData.firstName}
+          placeholder='e.g., John'
           onChange={handleChange}
           required
         />
@@ -99,6 +101,7 @@ function Register() {
           name='lastName'
           labelText='Last Name: '
           value={formData.lastName}
+          placeholder='e.g., Doe'
           onChange={handleChange}
           required
         />
@@ -115,6 +118,7 @@ function Register() {
           name='email'
           labelText='Email: '
           value={formData.email}
+          placeholder='john.doe@example.com'
           onChange={handleChange}
           required
         />
@@ -123,6 +127,7 @@ function Register() {
           name='username'
           labelText='Username: '
           value={formData.username}
+          placeholder='johndoe'
           onChange={handleChange}
           required
         />
@@ -131,6 +136,7 @@ function Register() {
           name='password'
           labelText='Password: '
           value={formData.password}
+          placeholder='example'
           onChange={handleChange}
           required
         />
@@ -139,6 +145,7 @@ function Register() {
           name='passwordConfirmation'
           labelText='Password confirmation: '
           value={formData.passwordConfirmation}
+          placeholder='example'
           onChange={handleChange}
           required
         />
