@@ -157,7 +157,8 @@ body {
 }
 
 .message-login.success,
-.message-register.success {
+.message-register.success,
+.add-solar-info-success {
   color: #28c10d;
   font-weight: bold;
   font-family: "Roboto", sans-serif;
