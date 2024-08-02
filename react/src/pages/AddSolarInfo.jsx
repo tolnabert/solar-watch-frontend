@@ -127,6 +127,24 @@ function AddSolarInfo() {
       setLoading(false);
     }
   };
+
+  const renderStateInput = () => {
+    const isUS = formData.country.toLowerCase() === "us";
+    return (
+      <FormRow
+        type='text'
+        name='state'
+        labelText='State: '
+        value={formData.state}
+        onChange={handleChange}
+        required={isUS}
+        placeholder={
+          isUS ? "Enter state (e.g., JP)" : "Optional (e.g., Andalusia)"
+        }
+      />
+    );
+  };
+
   return (
     <>
       <h1 className='solar-info-add-title'>Add Solar Info</h1>
@@ -136,6 +154,7 @@ function AddSolarInfo() {
           name='cityName'
           labelText='City name: '
           value={formData.cityName}
+          placeholder='e.g., Malaga'
           onChange={handleChange}
           required
         />
@@ -144,16 +163,11 @@ function AddSolarInfo() {
           name='country'
           labelText='Country: '
           value={formData.country}
+          placeholder='ISO 3166 (e.g., ES,US,HU)'
           onChange={handleChange}
           required
         />
-        <FormRow
-          type='text'
-          name='state'
-          labelText='State: '
-          value={formData.state}
-          onChange={handleChange}
-        />
+        {renderStateInput()}
         <FormRow
           type='date'
           name='date'
@@ -167,6 +181,7 @@ function AddSolarInfo() {
           name='latitude'
           labelText='Latitude: '
           value={formData.latitude}
+          placeholder='e.g., 36.7213028'
           onChange={handleChange}
           required
         />
@@ -175,6 +190,7 @@ function AddSolarInfo() {
           name='longitude'
           labelText='Longitude: '
           value={formData.longitude}
+          placeholder='e.g., -4.4216366'
           onChange={handleChange}
           required
         />

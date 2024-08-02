@@ -26,10 +26,9 @@ function SearchSolarInfo() {
       navigate("/login");
       return;
     }
-    if(roles.includes("ROLE_ADMIN") || roles.includes("ROLE_USER")) {
+    if (roles.includes("ROLE_ADMIN") || roles.includes("ROLE_USER")) {
       return;
-    } 
-
+    }
   }, [navigate]);
 
   const handleChange = (e) => {
@@ -64,7 +63,8 @@ function SearchSolarInfo() {
   };
 
   const renderStateInput = () => {
-    if (formData.country.toLowerCase() === "us") {
+    const isUs = formData.country.toLowerCase() === "us";
+    if (isUs) {
       return (
         <FormRow
           type='text'
@@ -72,6 +72,8 @@ function SearchSolarInfo() {
           labelText='State: '
           value={formData.state}
           onChange={handleChange}
+          required={isUs}
+          placeholder={isUs ? "Enter state (e.g., Texas)" : ""}
         />
       );
     }
@@ -86,6 +88,7 @@ function SearchSolarInfo() {
           name='cityName'
           labelText='City Name: '
           value={formData.cityName}
+          placeholder='city name'
           onChange={handleChange}
           required
         />
@@ -94,6 +97,7 @@ function SearchSolarInfo() {
           name='country'
           labelText='Country: '
           value={formData.country}
+          placeholder='(Optional) e.g., ES'
           onChange={handleChange}
         />
         {renderStateInput()}

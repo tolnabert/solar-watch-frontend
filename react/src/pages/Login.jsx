@@ -43,7 +43,8 @@ function Login() {
         localStorage.setItem("roles", data.roles);
         setMessage("Login successful! Redirecting to landing page!");
         setMessageType("success");
-        setTimeout(() => {//only in development for showcase delay
+        setTimeout(() => {
+          //only in development for showcase delay
           navigate("/search");
         }, 1500);
       } else {
@@ -68,6 +69,7 @@ function Login() {
           name='username'
           labelText='Username: '
           value={formData.username}
+          placeholder='username'
           onChange={handleChange}
           required
         />
@@ -76,6 +78,7 @@ function Login() {
           name='password'
           labelText='Password: '
           value={formData.password}
+          placeholder='password'
           onChange={handleChange}
           required
         />
