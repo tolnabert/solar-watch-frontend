@@ -251,7 +251,7 @@ function AddSolarInfo() {
         <button className='form-add-btn' type='submit' disabled={loading}>
           {loading ? "Adding..." : "Add"}
         </button>
-        {message && <p>{message}</p>}
+        {message && <p className="add-solar-info-success">{message}</p>}
       </form>
     </>
   );
